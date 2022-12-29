@@ -12,36 +12,40 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     if ( (playerSelection.toUpperCase() != "ROCK") && (playerSelection.toUpperCase() != "PAPER") && (playerSelection.toUpperCase() != "SCISSORS") ) {
-        return "Error! Please make a valid selection!"
+        console.log("Error! Please make a valid selection!");
+        return "error";
     } else if ( (playerSelection.toUpperCase() == "ROCK" && computerSelection == "Scissors") || (playerSelection.toUpperCase() == "PAPER" && computerSelection == "Rock") 
     || (playerSelection.toUpperCase() == "SCISSORS" && computerSelection == "Paper") ) {
-        return "Congrats! You win!";
+        console.log("Congrats! You win this round!");
+        return true;
     } else if ((playerSelection.toUpperCase() == "PAPER" && computerSelection == "Scissors") || (playerSelection.toUpperCase() == "SCISSORS" && computerSelection == "Rock") 
     || (playerSelection.toUpperCase() == "ROCK" && computerSelection == "Paper") ) {
-        return "Aww that's too bad! You lose!";
+        console.log("Aww that's too bad! You lost this round!");
+        return false;
     } else {
-        return "It's a Draw!";
+        console.log("This round ends in a draw!");
+        return "draw";
     }
 }
 
 
 function game() {
-    let playerInput = prompt("Welcome. Please choose rock, paper, or scissors:");
-    let playerWins = 0;
-    let computerWins = 0;
+    let playerWinCount = 0;
+    let computerWinCount = 0;
     for (i = 0; i < 5; i++) {
-        playRound(playerInput, getComputerChoice());
-        if (playerWins) {
-            playerWins++;
-        } else if (computerWins) {
-            computerWins++;
-        } 
-    }
-    if (playerWins > computerWins) {
-        return "Congratulations, you have won the game!";
-    } else if (playerWins < computerWins) {
-        return "Defeat! You have lost the game!";
+        let result = playRound(prompt("Welcome. Please choose rock, paper, or scissors:"), getComputerChoice());
+        if (result == true) {
+            playerWinCount++
+        } else if (result == false) {
+            computerWinCount++
+        } else if (result == "error") {
+            i--;
+        }
+    } if (playerWinCount > computerWinCount) {
+        console.log('the player has won the GAME');
+    } else if (computerWinCount > playerWinCount) {
+        console.log('the computer has won the GAME');
     } else {
-        return "The game ends in a draw!";
-    } 
+        console.log('the GAME ends in a draw..');
+    }
 }
