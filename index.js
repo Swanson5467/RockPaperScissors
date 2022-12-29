@@ -11,7 +11,7 @@ function getComputerChoice() {
 
 
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection.toUpperCase() != "ROCK" || "PAPER" || "SCISSORS") {
+    if ( (playerSelection.toUpperCase() != "ROCK") && (playerSelection.toUpperCase() != "PAPER") && (playerSelection.toUpperCase() != "SCISSORS") ) {
         return "Error! Please make a valid selection!"
     } else if ( (playerSelection.toUpperCase() == "ROCK" && computerSelection == "Scissors") || (playerSelection.toUpperCase() == "PAPER" && computerSelection == "Rock") 
     || (playerSelection.toUpperCase() == "SCISSORS" && computerSelection == "Paper") ) {
@@ -22,4 +22,26 @@ function playRound(playerSelection, computerSelection) {
     } else {
         return "It's a Draw!";
     }
+}
+
+
+function game() {
+    let playerInput = prompt("Welcome. Please choose rock, paper, or scissors:");
+    let playerWins = 0;
+    let computerWins = 0;
+    for (i = 0; i < 5; i++) {
+        playRound(playerInput, getComputerChoice());
+        if (playerWins) {
+            playerWins++;
+        } else if (computerWins) {
+            computerWins++;
+        } 
+    }
+    if (playerWins > computerWins) {
+        return "Congratulations, you have won the game!";
+    } else if (playerWins < computerWins) {
+        return "Defeat! You have lost the game!";
+    } else {
+        return "The game ends in a draw!";
+    } 
 }
