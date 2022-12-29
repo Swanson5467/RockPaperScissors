@@ -11,7 +11,9 @@ function getComputerChoice() {
 
 
 function playRound(playerSelection, computerSelection) {
-    if ( (playerSelection.toUpperCase() == "ROCK" && computerSelection == "Scissors") || (playerSelection.toUpperCase() == "PAPER" && computerSelection == "Rock") 
+    if (playerSelection.toUpperCase() != "ROCK" || "PAPER" || "SCISSORS") {
+        return "Error! Please make a valid selection!"
+    } else if ( (playerSelection.toUpperCase() == "ROCK" && computerSelection == "Scissors") || (playerSelection.toUpperCase() == "PAPER" && computerSelection == "Rock") 
     || (playerSelection.toUpperCase() == "SCISSORS" && computerSelection == "Paper") ) {
         return "Congrats! You win!";
     } else if ((playerSelection.toUpperCase() == "PAPER" && computerSelection == "Scissors") || (playerSelection.toUpperCase() == "SCISSORS" && computerSelection == "Rock") 
