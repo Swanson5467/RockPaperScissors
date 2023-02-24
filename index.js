@@ -62,9 +62,9 @@ const computerWins = document.querySelector('.computerWinText');
 const draws = document.querySelector('.drawText');
 
 
-const rockButton = document.querySelector('.rock');
-const paperButton = document.querySelector('.paper');
-const scissorsButton = document.querySelector('.scissors');
+const rockButton = document.querySelector('#rock');
+const paperButton = document.querySelector('#paper');
+const scissorsButton = document.querySelector('#scissors');
 const resetButton = document.querySelector('.reset');
 
 rockButton.onclick = () => playRound('Rock', getComputerChoice());

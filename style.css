@@ -1,17 +1,50 @@
-.player {
-    height: 50px;
-    width: 50px;
-    background-color: green;
+* {
+    border: 1px solid hotpink;
 }
 
-.computer {
-    height: 50px;
-    width: 80px;
-    background-color: red;
+body {
+    background-color: black;
 }
 
-.start {
-    height: 100px;
+.scoreboard {
+    display: flex;
+    justify-content: center;
+}
+
+.scoreboard>div {
+    color: white;
+}
+
+.reset {
     width: 100px;
-    background-color: orange;
+    align-self: center;
+}
+
+.space {
+    height: 150px;
+}
+
+.spaceDivs {
+    display: flex;
+    flex-direction: column;
+}
+
+.choices {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+
+
+.button {
+    transition: all .2s ease-in-out;
+    width: 200px;
+    height: 200px;
+}
+
+.button:hover {
+    transform: scale(1.1);
 }
