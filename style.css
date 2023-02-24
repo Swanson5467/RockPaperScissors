@@ -1,0 +1,17 @@
+.player {
+    height: 50px;
+    width: 50px;
+    background-color: green;
+}
+
+.computer {
+    height: 50px;
+    width: 80px;
+    background-color: red;
+}
+
+.start {
+    height: 100px;
+    width: 100px;
+    background-color: orange;
+}
