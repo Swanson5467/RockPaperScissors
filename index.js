@@ -21,20 +21,25 @@ function playRound(playerSelection, computerSelection) {
         alert(`The computer has chosen ${computerSelection}... and you won!`);
         playerWinCount += 1;
         playerWins.textContent = playerWinCount;
+        if (playerWinCount === 5) {
+            alert('Congratulations! You have won the game!');
+        }
         return true;
     } else if (playerSelection === computerSelection) {
-        alert(`The computer has chosen ${computerSelection}... and you lost..`);
+        alert(`The computer has chosen ${computerSelection}... it's a draw.`);
         drawCount += 1;
         draws.textContent = drawCount;
         return "draw";
     } else {
-        alert(`The computer has chosen ${computerSelection}... it's a draw`);
+        alert(`The computer has chosen ${computerSelection}... and you lost..`);
         computerWinCount += 1;
         computerWins.textContent = computerWinCount;
+        if (computerWinCount === 5) {
+            alert('Aww, too bad! The computer has won the game..');
+        }
         return false;
-    }; 
+    };
 };
-
 
 
 
