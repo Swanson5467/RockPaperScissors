@@ -21,23 +21,24 @@ function playRound(playerSelection, computerSelection) {
         alert(`The computer has chosen ${computerSelection}... and you won!`);
         playerWinCount += 1;
         playerWins.textContent = playerWinCount;
-        if (playerWinCount === 5) {
+        if (playerWinCount === 1) {
             alert('Congratulations! You have won the game!');
+            gameWon();
+            //resetGame();
         }
-        return true;
     } else if (playerSelection === computerSelection) {
         alert(`The computer has chosen ${computerSelection}... it's a draw.`);
         drawCount += 1;
         draws.textContent = drawCount;
-        return "draw";
     } else {
         alert(`The computer has chosen ${computerSelection}... and you lost..`);
         computerWinCount += 1;
         computerWins.textContent = computerWinCount;
-        if (computerWinCount === 5) {
+        if (computerWinCount === 1) {
             alert('Aww, too bad! The computer has won the game..');
+            gameWon();
+            //resetGame();
         }
-        return false;
     };
 };
 
@@ -56,6 +57,29 @@ function game() {
     }
 }
 
+function gameWon() {
+    const congratsMsg = document.createElement('div');
+    congratsMsg.textContent = 'CONGRATULATIONS!!!';
+    congratsMsg.className = 'congratsMsg';
+    congratsMsg.style.color = "hotpink";
+    congratsMsg.style.fontSize = '100px';
+    congratsMsg.style.fontFamily = 'Audiowide';
+    const ele = document.querySelector('.space1');
+    ele.appendChild(congratsMsg);
+}
+
+
+function resetGame() {
+    playerWinCount = 0;
+    computerWinCount = 0;
+    drawCount = 0;
+    playerWins.textContent = playerWinCount;
+    computerWins.textContent = computerWinCount;
+    draws.textContent = drawCount;
+    const toDelete = document.querySelector('.congratsMsg');
+    toDelete.remove();
+}
+
 
 const playerWins = document.querySelector('.playerWinText');
 const computerWins = document.querySelector('.computerWinText');
@@ -71,10 +95,5 @@ rockButton.onclick = () => playRound('Rock', getComputerChoice());
 paperButton.onclick = () => playRound('Paper', getComputerChoice());
 scissorsButton.onclick = () => playRound('Scissors', getComputerChoice());
 resetButton.onclick = function() {
-    playerWinCount = 0;
-    computerWinCount = 0;
-    drawCount = 0;
-    playerWins.textContent = playerWinCount;
-    computerWins.textContent = computerWinCount;
-    draws.textContent = drawCount;
+    resetGame();
 }

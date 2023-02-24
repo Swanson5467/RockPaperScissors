@@ -1,27 +1,43 @@
-* {
-    border: 1px solid hotpink;
-}
+
 
 body {
-    background-color: black;
+    background-color: rgb(103, 19, 221);
 }
+
 
 .scoreboard {
     display: flex;
     justify-content: center;
 }
 
-.scoreboard>div {
-    color: white;
+
+.stats {
+    font-family: "Audiowide";
+    text-align: center;
+    font-size: 30px;
+    color: aqua;
+    margin: 10px;
 }
 
 .reset {
-    width: 100px;
+    font-size: 30px;
+    font-family: "Audiowide";
+    height: 75px;
+    width: 300px;
     align-self: center;
+    border-radius: 15px;
+    color: rgb(103, 19, 221);
+    background-color: black;
+    transition-duration: 0.5s;
+}
+
+.reset:hover {
+    color: black;
+    background-color: rgb(103, 19, 221);
 }
 
 .space {
-    height: 150px;
+    height: 100px;
 }
 
 .spaceDivs {
@@ -31,7 +47,7 @@ body {
 
 .choices {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 
@@ -42,7 +58,8 @@ body {
 .button {
     transition: all .2s ease-in-out;
     width: 200px;
-    height: 200px;
+    height: 250px;
+    padding: 10px;
 }
 
 .button:hover {
