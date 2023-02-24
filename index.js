@@ -16,31 +16,24 @@ let drawCount = 0;
 
 
 function playRound(playerSelection, computerSelection) {
-    if ( (playerSelection.toUpperCase() != "ROCK") && (playerSelection.toUpperCase() != "PAPER") && (playerSelection.toUpperCase() != "SCISSORS") ) {
-        alert("Error! Please make a valid selection!");
-        return "error";
-    } else if ( (playerSelection.toUpperCase() == "ROCK" && computerSelection == "Scissors") || (playerSelection.toUpperCase() == "PAPER" && computerSelection == "Rock") 
-    || (playerSelection.toUpperCase() == "SCISSORS" && computerSelection == "Paper") ) {
-        alert(`The computer has chosen ${computerSelection}...`);
+    if ( (playerSelection === 'Rock' && computerSelection === "Scissors") || (playerSelection === 'Paper' && computerSelection === "Rock") 
+    || (playerSelection === 'Scissors' && computerSelection === "Paper") ) {
+        alert(`The computer has chosen ${computerSelection}... and you won!`);
         playerWinCount += 1;
         playerWins.textContent = playerWinCount;
-        //alert("Congrats! You win this round!");
         return true;
-    } else if ((playerSelection.toUpperCase() == "PAPER" && computerSelection == "Scissors") || (playerSelection.toUpperCase() == "SCISSORS" && computerSelection == "Rock") 
-    || (playerSelection.toUpperCase() == "ROCK" && computerSelection == "Paper") ) {
-        alert(`The computer has chosen ${computerSelection}...`);
-        computerWinCount += 1;
-        computerWins.textContent = computerWinCount;
-        //alert("Aww that's too bad! You lost this round!");
-        return false;
-    } else {
-        alert(`The computer has chosen ${computerSelection}...`);
+    } else if (playerSelection === computerSelection) {
+        alert(`The computer has chosen ${computerSelection}... and you lost..`);
         drawCount += 1;
         draws.textContent = drawCount;
-        //alert("This round ends in a draw!");
         return "draw";
-    }
-}
+    } else {
+        alert(`The computer has chosen ${computerSelection}... it's a draw`);
+        computerWinCount += 1;
+        computerWins.textContent = computerWinCount;
+        return false;
+    }; 
+};
 
 
 
@@ -69,9 +62,9 @@ const paperButton = document.querySelector('.paper');
 const scissorsButton = document.querySelector('.scissors');
 const resetButton = document.querySelector('.reset');
 
-rockButton.onclick = () => playRound('rock', getComputerChoice());
-paperButton.onclick = () => playRound('paper', getComputerChoice());
-scissorsButton.onclick = () => playRound('scissors', getComputerChoice());
+rockButton.onclick = () => playRound('Rock', getComputerChoice());
+paperButton.onclick = () => playRound('Paper', getComputerChoice());
+scissorsButton.onclick = () => playRound('Scissors', getComputerChoice());
 resetButton.onclick = function() {
     playerWinCount = 0;
     computerWinCount = 0;
