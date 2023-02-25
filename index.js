@@ -23,8 +23,8 @@ function playRound(playerSelection, computerSelection) {
         playerWins.textContent = playerWinCount;
         if (playerWinCount === 1) {
             alert('Congratulations! You have won the game!');
-            gameWon();
-            //resetGame();
+            gameEnd(1);
+            setTimeout(resetGame, 3000);
         }
     } else if (playerSelection === computerSelection) {
         alert(`The computer has chosen ${computerSelection}... it's a draw.`);
@@ -36,8 +36,8 @@ function playRound(playerSelection, computerSelection) {
         computerWins.textContent = computerWinCount;
         if (computerWinCount === 1) {
             alert('Aww, too bad! The computer has won the game..');
-            gameWon();
-            //resetGame();
+            gameEnd(2);
+            setTimeout(resetGame, 3000);
         }
     };
 };
@@ -57,15 +57,19 @@ function game() {
     }
 }
 
-function gameWon() {
-    const congratsMsg = document.createElement('div');
-    congratsMsg.textContent = 'CONGRATULATIONS!!!';
-    congratsMsg.className = 'congratsMsg';
-    congratsMsg.style.color = "hotpink";
-    congratsMsg.style.fontSize = '100px';
-    congratsMsg.style.fontFamily = 'Audiowide';
+function gameEnd(winCon) {
+    const Msg = document.createElement('div');
+    Msg.className = 'Msg';
+    Msg.style.color = "hotpink";
+    Msg.style.fontSize = '100px';
+    Msg.style.fontFamily = 'Audiowide';
+    if (winCon === 1) {
+        Msg.textContent = 'CONGRATULATIONS!!!';
+    } else if (winCon === 2) {
+        Msg.textContent = 'DEFEAT...'
+    }
     const ele = document.querySelector('.space1');
-    ele.appendChild(congratsMsg);
+    ele.appendChild(Msg);
 }
 
 
@@ -76,7 +80,7 @@ function resetGame() {
     playerWins.textContent = playerWinCount;
     computerWins.textContent = computerWinCount;
     draws.textContent = drawCount;
-    const toDelete = document.querySelector('.congratsMsg');
+    const toDelete = document.querySelector('.Msg');
     toDelete.remove();
 }
 
