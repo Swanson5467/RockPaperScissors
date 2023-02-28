@@ -1,4 +1,6 @@
-
+* {
+    border: 2px solid limegreen;
+}
 
 body {
     background-color: rgb(103, 19, 221);
@@ -19,6 +21,12 @@ body {
     margin: 10px;
 }
 
+.buttonDiv {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
 .reset {
     font-size: 30px;
     font-family: "Audiowide";
@@ -37,7 +45,7 @@ body {
 }
 
 .space {
-    height: 100px;
+    height: 10px;
 }
 
 .spaceDivs {
@@ -48,6 +56,7 @@ body {
 .choices {
     display: flex;
     justify-content: center;
+    gap: 50px;
 }
 
 
