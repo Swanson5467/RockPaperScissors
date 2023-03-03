@@ -20,28 +20,28 @@ function playRound(playerSelection, computerSelection) {
     || (playerSelection === 'Scissors' && computerSelection === "Paper") ) {
         displayPlayerImage(playerSelection);
         displayComputerImage(computerSelection);
-        setTimeout( () => removeImages(), 1000);
-        setTimeout( () => displayWinMsg(), 1250);
+        setTimeout( () => removeImages(), 2000);
+        setTimeout( () => displayWinMsg(), 2250);
         playerWinCount += 1;
         playerWins.textContent = playerWinCount;
-        if (playerWinCount === 1) {
+        if (playerWinCount === 5) {
             setTimeout(resetGame, 5000);
         }
     } else if (playerSelection === computerSelection) {
         displayPlayerImage(playerSelection);
         displayComputerImage(computerSelection);
-        setTimeout( () => removeImages(), 1000);
+        setTimeout( () => removeImages(), 2000);
         drawCount += 1;
         draws.textContent = drawCount;
         restore();
     } else {
         displayPlayerImage(playerSelection);
         displayComputerImage(computerSelection);
-        setTimeout( () => removeImages(), 1000);
-        setTimeout( () => displayWinMsg(), 1250);
+        setTimeout( () => removeImages(), 2000);
+        setTimeout( () => displayWinMsg(), 2250);
         computerWinCount += 1;
         computerWins.textContent = computerWinCount;
-        if (computerWinCount === 1) {
+        if (computerWinCount === 5) {
             setTimeout(resetGame, 5000);
         }
     };

@@ -1,13 +1,29 @@
-
-
 body {
     background-color: rgb(103, 19, 221);
+}
+
+.gameName {
+    position: relative;
+    color: antiquewhite;
+    font-size: 40px;
+    font-family: 'Audiowide';
+    right: 50px;
+}
+
+.gameInstructions {
+    position: relative;
+    top: 100px;
+    color: rgb(207, 15, 130);
+    font-size: 25px;
+    font-family: 'Audiowide';
 }
 
 
 .scoreboard {
     display: flex;
     justify-content: center;
+    position: relative;
+    right: 250px;
 }
 
 
@@ -56,6 +72,8 @@ body {
     display: flex;
     justify-content: center;
     gap: 50px;
+    position: relative;
+    right: 250px;
 }
 
 
