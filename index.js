@@ -33,7 +33,6 @@ function playRound(playerSelection, computerSelection) {
         setTimeout( () => removeImages(), 2000);
         drawCount += 1;
         draws.textContent = drawCount;
-        //restore();
     } else {
         displayPlayerImage(playerSelection);
         displayComputerImage(computerSelection);
