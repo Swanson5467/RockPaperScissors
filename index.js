@@ -21,10 +21,10 @@ function playRound(playerSelection, computerSelection) {
         displayPlayerImage(playerSelection);
         displayComputerImage(computerSelection);
         setTimeout( () => removeImages(), 2000);
-        setTimeout( () => displayWinMsg(), 2250);
         playerWinCount += 1;
         playerWins.textContent = playerWinCount;
         if (playerWinCount === 5) {
+            setTimeout( () => displayWinMsg(), 2250);
             setTimeout(resetGame, 5000);
         }
     } else if (playerSelection === computerSelection) {
@@ -33,15 +33,15 @@ function playRound(playerSelection, computerSelection) {
         setTimeout( () => removeImages(), 2000);
         drawCount += 1;
         draws.textContent = drawCount;
-        restore();
+        //restore();
     } else {
         displayPlayerImage(playerSelection);
         displayComputerImage(computerSelection);
         setTimeout( () => removeImages(), 2000);
-        setTimeout( () => displayWinMsg(), 2250);
         computerWinCount += 1;
         computerWins.textContent = computerWinCount;
         if (computerWinCount === 5) {
+            setTimeout( () => displayWinMsg(), 2250);
             setTimeout(resetGame, 5000);
         }
     };
@@ -102,6 +102,7 @@ function removeImages() {
     computerMove.remove();
     playerMove.remove();
     vsImage.remove();
+    restore();
 }
 
 function disable() {
@@ -139,7 +140,6 @@ function displayWinMsg() {
 function removeWinMsg() {
     const toDelete = document.querySelector('.Msg');
     toDelete.remove();
-    restore();
 }
 
 
