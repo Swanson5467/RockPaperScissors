@@ -1,6 +1,4 @@
-* {
-    border: 2px solid limegreen;
-}
+
 
 body {
     background-color: rgb(103, 19, 221);
@@ -51,6 +49,7 @@ body {
 .spaceDivs {
     display: flex;
     flex-direction: column;
+    height: 250px;
 }
 
 .choices {

@@ -18,58 +18,128 @@ let drawCount = 0;
 function playRound(playerSelection, computerSelection) {
     if ( (playerSelection === 'Rock' && computerSelection === "Scissors") || (playerSelection === 'Paper' && computerSelection === "Rock") 
     || (playerSelection === 'Scissors' && computerSelection === "Paper") ) {
-        alert(`The computer has chosen ${computerSelection}... and you won!`);
+        displayPlayerImage(playerSelection);
+        displayComputerImage(computerSelection);
+        setTimeout( () => removeImages(), 1000);
+        setTimeout( () => displayWinMsg(), 1250);
         playerWinCount += 1;
         playerWins.textContent = playerWinCount;
         if (playerWinCount === 1) {
-            alert('Congratulations! You have won the game!');
-            gameEnd(1);
-            setTimeout(resetGame, 3000);
+            setTimeout(resetGame, 5000);
         }
     } else if (playerSelection === computerSelection) {
-        alert(`The computer has chosen ${computerSelection}... it's a draw.`);
+        displayPlayerImage(playerSelection);
+        displayComputerImage(computerSelection);
+        setTimeout( () => removeImages(), 1000);
         drawCount += 1;
         draws.textContent = drawCount;
+        restore();
     } else {
-        alert(`The computer has chosen ${computerSelection}... and you lost..`);
+        displayPlayerImage(playerSelection);
+        displayComputerImage(computerSelection);
+        setTimeout( () => removeImages(), 1000);
+        setTimeout( () => displayWinMsg(), 1250);
         computerWinCount += 1;
         computerWins.textContent = computerWinCount;
         if (computerWinCount === 1) {
-            alert('Aww, too bad! The computer has won the game..');
-            gameEnd(2);
-            setTimeout(resetGame, 3000);
+            setTimeout(resetGame, 5000);
         }
     };
 };
 
-
-
-function game() {
-    let playerWinCount = 0;
-    let computerWinCount = 0;
-    playRound(prompt("Welcome. Please choose rock, paper, or scissors:"), getComputerChoice());
-    if (playerWinCount > computerWinCount) {
-        alert('The player has won the GAME');
-    } else if (computerWinCount > playerWinCount) {
-        alert('The computer has won the GAME');
+function displayPlayerImage(playerChoice) {
+    const image = document.createElement('img');
+        image.className = 'playerMove';
+        image.style.height = '200px';
+        image.style.width = '200px';
+        image.style.position = 'relative';
+        image.style.left = '575px';
+    const vs = document.createElement('span');
+        vs.className = 'vsImage';
+        vs.textContent = 'VS';
+        vs.style.fontSize = '100px';
+        vs.style.fontFamily = 'Audiowide';
+        vs.style.color = 'hotpink';
+        vs.style.position = 'relative';
+        vs.style.left = '650px';
+        vs.style.bottom = '50px';
+    if (playerChoice === 'Rock') {
+        image.src = 'images/rockLeft.png';
+    } else if (playerChoice === 'Paper') {
+        image.src = 'images/paperLeft.png';
     } else {
-        alert('The GAME ends in a draw');
+        image.src = 'images/scissorsLeft.png';
     }
+    const ele = document.querySelector('.space1');
+    ele.appendChild(image);
+    ele.appendChild(vs);
+    disable();
 }
 
-function gameEnd(winCon) {
+function displayComputerImage(computerChoice) {
+    const image = document.createElement('img');
+        image.className = 'computerMove';
+        image.style.height = '200px';
+        image.style.width = '200px';
+        image.style.position = 'relative';
+        image.style.left = '725px';
+    if (computerChoice === 'Rock') {
+        image.src = 'images/rockRight.png';
+    } else if (computerChoice === 'Paper') {
+        image.src = 'images/paperRight.png';
+    } else {
+        image.src = 'images/scissorsRight.png';
+    }
+    const ele = document.querySelector('.space1');
+    ele.appendChild(image);
+}
+
+
+function removeImages() {
+    const computerMove = document.querySelector('.computerMove');
+    const playerMove = document.querySelector('.playerMove');
+    const vsImage = document.querySelector('.vsImage');
+    computerMove.remove();
+    playerMove.remove();
+    vsImage.remove();
+}
+
+function disable() {
+    rockButton.setAttribute('disabled', 'disabled');
+    paperButton.setAttribute('disabled', 'disabled');
+    scissorsButton.setAttribute('disabled', 'disabled');
+}
+
+
+function restore() {
+    rockButton.removeAttribute('disabled');
+    paperButton.removeAttribute('disabled');
+    scissorsButton.removeAttribute('disabled');
+}
+
+
+function displayWinMsg() {
     const Msg = document.createElement('div');
     Msg.className = 'Msg';
     Msg.style.color = "hotpink";
     Msg.style.fontSize = '100px';
     Msg.style.fontFamily = 'Audiowide';
-    if (winCon === 1) {
+    Msg.style.position = 'relative';
+    Msg.style.left = '700px';
+    if (playerWinCount > computerWinCount) {
         Msg.textContent = 'CONGRATULATIONS!!!';
-    } else if (winCon === 2) {
+        Msg.style.left = '400px';
+    } else {
         Msg.textContent = 'DEFEAT...'
     }
     const ele = document.querySelector('.space1');
     ele.appendChild(Msg);
+}
+
+function removeWinMsg() {
+    const toDelete = document.querySelector('.Msg');
+    toDelete.remove();
+    restore();
 }
 
 
@@ -80,8 +150,7 @@ function resetGame() {
     playerWins.textContent = playerWinCount;
     computerWins.textContent = computerWinCount;
     draws.textContent = drawCount;
-    const toDelete = document.querySelector('.Msg');
-    toDelete.remove();
+    removeWinMsg();
 }
 
 
@@ -94,6 +163,7 @@ const rockButton = document.querySelector('#rock');
 const paperButton = document.querySelector('#paper');
 const scissorsButton = document.querySelector('#scissors');
 const resetButton = document.querySelector('.reset');
+
 
 rockButton.onclick = () => playRound('Rock', getComputerChoice());
 paperButton.onclick = () => playRound('Paper', getComputerChoice());
