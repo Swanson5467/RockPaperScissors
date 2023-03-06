@@ -1,3 +1,4 @@
+// function to randomly select a choice for the 'computer'
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3);
     if (choice == 0) {
@@ -15,6 +16,7 @@ let computerWinCount = 0;
 let drawCount = 0;
 
 
+// this is where the game is played. able to adjust number of wins it takes to win the match.
 function playRound(playerSelection, computerSelection) {
     if ( (playerSelection === 'Rock' && computerSelection === "Scissors") || (playerSelection === 'Paper' && computerSelection === "Rock") 
     || (playerSelection === 'Scissors' && computerSelection === "Paper") ) {
@@ -46,6 +48,7 @@ function playRound(playerSelection, computerSelection) {
     };
 };
 
+// displays the image of player's choice, as well as the VS letters
 function displayPlayerImage(playerChoice) {
     const image = document.createElement('img');
         image.className = 'playerMove';
@@ -75,6 +78,7 @@ function displayPlayerImage(playerChoice) {
     disable();
 }
 
+// displays the image of what the computer choice is
 function displayComputerImage(computerChoice) {
     const image = document.createElement('img');
         image.className = 'computerMove';
@@ -93,7 +97,7 @@ function displayComputerImage(computerChoice) {
     ele.appendChild(image);
 }
 
-
+// removes the battle images from the screen
 function removeImages() {
     const computerMove = document.querySelector('.computerMove');
     const playerMove = document.querySelector('.playerMove');
@@ -104,20 +108,22 @@ function removeImages() {
     restore();
 }
 
+// disables the functionality of clicking the buttons, preventing you from causing multiple
+    // images to clutter the screen
 function disable() {
     rockButton.setAttribute('disabled', 'disabled');
     paperButton.setAttribute('disabled', 'disabled');
     scissorsButton.setAttribute('disabled', 'disabled');
 }
 
-
+// restores the functionality of the clickable buttons, allowing you to continue the game
 function restore() {
     rockButton.removeAttribute('disabled');
     paperButton.removeAttribute('disabled');
     scissorsButton.removeAttribute('disabled');
 }
 
-
+// dislays either 'congratulations' if you win or 'defeat' if you lose the match
 function displayWinMsg() {
     const Msg = document.createElement('div');
     Msg.className = 'Msg';
@@ -136,12 +142,13 @@ function displayWinMsg() {
     ele.appendChild(Msg);
 }
 
+// removes the game ending message
 function removeWinMsg() {
     const toDelete = document.querySelector('.Msg');
     toDelete.remove();
 }
 
-
+// resets the scores to zero and clears the screen
 function resetGame() {
     playerWinCount = 0;
     computerWinCount = 0;
